@@ -72,70 +72,70 @@ export default function Hero() {
               </a>
             </div>
 
-          </div>
+            {/* 6. Four Features Strip (Crown, Diamond, Person, Bag) placed in right column */}
+            <div className="hero-trust-strip">
+              
+              {/* Feature 1 (Right): تصاميم حصرية وفاخرة (Crown) */}
+              <div className="trust-strip-item">
+                <svg className="trust-icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#B48D4C" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M4 18h16M4 18l1.6-9.5 4.4 4 2-7.5 2 7.5 4.4-4L20 18" />
+                  <circle cx="4" cy="8.5" r="1" fill="#B48D4C" />
+                  <circle cx="10" cy="12.5" r="1" fill="#B48D4C" />
+                  <circle cx="12" cy="5" r="1" fill="#B48D4C" />
+                  <circle cx="14" cy="12.5" r="1" fill="#B48D4C" />
+                  <circle cx="20" cy="8.5" r="1" fill="#B48D4C" />
+                </svg>
+                <div className="trust-item-text">
+                  <span className="trust-main-txt">{t.hero.trust1Main}</span>
+                  <span className="trust-sub-txt">{t.hero.trust1Sub}</span>
+                </div>
+              </div>
 
-        </div>
+              <div className="trust-strip-divider" aria-hidden="true"></div>
 
-        {/* 6. Four Features Strip (Crown, Diamond, Person, Bag) */}
-        <div className="hero-trust-strip">
-          
-          {/* Feature 1 (Right): تصاميم حصرية وفاخرة (Crown) */}
-          <div className="trust-strip-item">
-            <svg className="trust-icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#B48D4C" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M4 18h16M4 18l1.6-9.5 4.4 4 2-7.5 2 7.5 4.4-4L20 18" />
-              <circle cx="4" cy="8.5" r="1" fill="#B48D4C" />
-              <circle cx="10" cy="12.5" r="1" fill="#B48D4C" />
-              <circle cx="12" cy="5" r="1" fill="#B48D4C" />
-              <circle cx="14" cy="12.5" r="1" fill="#B48D4C" />
-              <circle cx="20" cy="8.5" r="1" fill="#B48D4C" />
-            </svg>
-            <div className="trust-item-text">
-              <span className="trust-main-txt">{t.hero.trust1Main}</span>
-              <span className="trust-sub-txt">{t.hero.trust1Sub}</span>
+              {/* Feature 2: أقمشة عالية الجودة ومريحة (Diamond) */}
+              <div className="trust-strip-item">
+                <svg className="trust-icon-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B48D4C" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M6 4h12l4 7-10 11L2 11l4-7z" />
+                  <path d="M2 11h20" />
+                  <path d="M9 4l-2 7 5 11 5-11-2-7" />
+                </svg>
+                <div className="trust-item-text">
+                  <span className="trust-main-txt">{t.hero.trust2Main}</span>
+                  <span className="trust-sub-txt">{t.hero.trust2Sub}</span>
+                </div>
+              </div>
+
+              <div className="trust-strip-divider" aria-hidden="true"></div>
+
+              {/* Feature 3: تجربة شخصية ومميزة (Person) */}
+              <div className="trust-strip-item">
+                <svg className="trust-icon-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B48D4C" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="7" r="4.5" />
+                  <path d="M5 21a7 7 0 0 1 14 0" />
+                </svg>
+                <div className="trust-item-text">
+                  <span className="trust-main-txt">{t.hero.trust3Main}</span>
+                  <span className="trust-sub-txt">{t.hero.trust3Sub}</span>
+                </div>
+              </div>
+
+              <div className="trust-strip-divider" aria-hidden="true"></div>
+
+              {/* Feature 4 (Left): استلام فوري وبدون عناء (Shopping Bag) */}
+              <div className="trust-strip-item">
+                <svg className="trust-icon-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B48D4C" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M6 7h12l1.5 13a2 2 0 0 1-2 2H6.5a2 2 0 0 1-2-2L6 7z" />
+                  <path d="M9 10a3 3 0 0 0 6 0" />
+                </svg>
+                <div className="trust-item-text">
+                  <span className="trust-main-txt">{t.hero.trust4Main}</span>
+                  <span className="trust-sub-txt">{t.hero.trust4Sub}</span>
+                </div>
+              </div>
+
             </div>
-          </div>
 
-          <div className="trust-strip-divider" aria-hidden="true"></div>
-
-          {/* Feature 2: أقمشة عالية الجودة ومريحة (Diamond) */}
-          <div className="trust-strip-item">
-            <svg className="trust-icon-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B48D4C" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M6 4h12l4 7-10 11L2 11l4-7z" />
-              <path d="M2 11h20" />
-              <path d="M9 4l-2 7 5 11 5-11-2-7" />
-            </svg>
-            <div className="trust-item-text">
-              <span className="trust-main-txt">{t.hero.trust2Main}</span>
-              <span className="trust-sub-txt">{t.hero.trust2Sub}</span>
-            </div>
-          </div>
-
-          <div className="trust-strip-divider" aria-hidden="true"></div>
-
-          {/* Feature 3: تجربة شخصية ومميزة (Person) */}
-          <div className="trust-strip-item">
-            <svg className="trust-icon-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B48D4C" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <circle cx="12" cy="7" r="4.5" />
-              <path d="M5 21a7 7 0 0 1 14 0" />
-            </svg>
-            <div className="trust-item-text">
-              <span className="trust-main-txt">{t.hero.trust3Main}</span>
-              <span className="trust-sub-txt">{t.hero.trust3Sub}</span>
-            </div>
-          </div>
-
-          <div className="trust-strip-divider" aria-hidden="true"></div>
-
-          {/* Feature 4 (Left): استلام فوري وبدون عناء (Shopping Bag) */}
-          <div className="trust-strip-item">
-            <svg className="trust-icon-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B48D4C" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M6 7h12l1.5 13a2 2 0 0 1-2 2H6.5a2 2 0 0 1-2-2L6 7z" />
-              <path d="M9 10a3 3 0 0 0 6 0" />
-            </svg>
-            <div className="trust-item-text">
-              <span className="trust-main-txt">{t.hero.trust4Main}</span>
-              <span className="trust-sub-txt">{t.hero.trust4Sub}</span>
-            </div>
           </div>
 
         </div>

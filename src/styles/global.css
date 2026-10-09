@@ -50,7 +50,10 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px; /* Balanced moderate font size */
+  font-size: 16px;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 
 body {
@@ -60,6 +63,8 @@ body {
   font-size: 1rem;
   direction: rtl;
   overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
   -webkit-font-smoothing: antialiased;
   position: relative;
 }
@@ -68,9 +73,15 @@ body::before {
   display: none;
 }
 
-#root {
+#root,
+.app-layout,
+.main-palace-sections,
+.remaining-sections-flow {
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
   position: relative;
-  z-index: 1;
+  box-sizing: border-box;
 }
 
 /* Selection */
@@ -97,8 +108,9 @@ body::before {
   max-width: 1220px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 28px;
-  padding-right: 28px;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
 }
 
 img {
@@ -2358,7 +2370,6 @@ button {
 }
 
 /* ==========================================================================
-/* ==========================================================================
    PRODUCTION RESPONSIVE SYSTEM (DESKTOP, TABLET LANDSCAPE, TABLET PORTRAIT, MOBILE)
    AURA BEAUTY — Tailored layouts for every screen size with zero overflow
    ========================================================================== */
@@ -2413,6 +2424,11 @@ button {
   .hero-story-column {
     width: 54%;
     max-width: 550px;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
   }
   .hero-luxury-headline {
     font-size: 2.35rem;
@@ -2446,7 +2462,7 @@ button {
    Covers iPad Mini (768px), iPad (820px), iPad Air (820px), iPad Pro Portrait (1024px)
    -------------------------------------------------------------------------- */
 @media (min-width: 641px) and (max-width: 1024px) {
-  /* Navbar: Clean drawer trigger to prevent any header link crowding */
+  /* Navbar */
   .navbar-links-group {
     display: none !important;
   }
@@ -2454,30 +2470,44 @@ button {
     display: inline-flex !important;
   }
   .navbar-container-flex {
-    padding: 10px 22px;
-    gap: 14px;
+    padding: 10px 20px;
+    gap: 12px;
   }
   .navbar-brand-logo {
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
   }
   .navbar-brand-title {
-    font-size: 1.38rem;
+    font-size: 1.32rem;
   }
   .navbar-brand-sub {
-    font-size: 0.54rem;
-    letter-spacing: 0.24em;
+    display: none !important;
+  }
+  .nav-booking-pill-btn span {
+    display: none !important;
   }
   .nav-booking-pill-btn {
-    padding: 9px 18px;
-    font-size: 0.88rem;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    padding: 0;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
   .nav-lang-toggle-btn {
     padding: 7px 12px;
-    font-size: 0.85rem;
+    font-size: 0.84rem;
+    height: 40px;
+    border-radius: 20px;
+  }
+  .mobile-menu-trigger {
+    width: 40px;
+    height: 40px;
   }
 
-  /* Dedicated Tablet Hero Layout */
+  /* Dedicated Tablet Hero Layout (Unboxed & Clean) */
   .hero-editorial-wrapper {
     height: auto;
     min-height: calc(100dvh - var(--navbar-height, 84px));
@@ -2485,27 +2515,30 @@ button {
     background-position: left top;
     background-size: cover;
     padding: clamp(26px, 3.5vh, 40px) 0 clamp(20px, 2.5vh, 32px);
+    overflow-x: hidden;
   }
   .hero-editorial-container {
     height: auto;
     gap: 24px;
-    padding: 0 clamp(16px, 2.5vw, 28px);
+    padding: 0 clamp(16px, 2.5vw, 24px);
+    max-width: 100%;
+    overflow-x: hidden;
   }
   .hero-main-row {
     justify-content: flex-start; /* in RTL, starts at right */
-    padding-inline-start: clamp(14px, 2.8vw, 30px);
+    padding-inline-start: clamp(14px, 2.8vw, 28px);
     width: 100%;
+    max-width: 100%;
   }
   .hero-story-column {
-    width: clamp(420px, 58%, 510px);
-    max-width: 510px;
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(201, 158, 75, 0.24);
-    border-radius: 20px;
-    padding: clamp(22px, 2.6vw, 28px) clamp(16px, 2vw, 22px);
-    box-shadow: 0 10px 32px rgba(40, 5, 12, 0.07);
+    width: clamp(380px, 54%, 480px);
+    max-width: 480px;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
     text-align: center;
     align-items: center;
     margin-inline-start: 0;
@@ -2532,16 +2565,19 @@ button {
     font-size: 0.88rem;
   }
 
-  /* 4 Trust Features: Balanced 2x2 grid in tablet story card */
+  /* 4 Trust Features: 2x2 grid */
   .hero-trust-strip {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px 14px;
     width: 100%;
     margin-top: 18px;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
   }
   .trust-strip-divider {
-    display: none;
+    display: none !important;
   }
   .trust-strip-item {
     flex-direction: row;
@@ -2550,6 +2586,8 @@ button {
     padding: 0;
     text-align: right;
     justify-content: flex-start;
+    background: transparent !important;
+    border: none !important;
   }
   .trust-item-text {
     align-items: flex-start;
@@ -2581,6 +2619,9 @@ button {
 
   .gallery-slide-item {
     flex: 0 0 295px;
+  }
+  .gallery-carousel-wrapper {
+    margin: 0;
   }
   .gallery-nav-btn {
     width: 44px;
@@ -2626,7 +2667,7 @@ button {
   }
 }
 
-/* Intermediate Tablet breakpoint adjustment (768px to 860px) for 2-column cards if narrow */
+/* Intermediate Tablet breakpoint adjustment (768px to 860px) for 2-column cards */
 @media (min-width: 641px) and (max-width: 860px) {
   .quote-pillars-spread {
     grid-template-columns: repeat(2, 1fr);
@@ -2646,7 +2687,7 @@ button {
 
 /* --------------------------------------------------------------------------
    4. Mobile Tier (<= 640px)
-   Covers standard smartphones (361px to 640px)
+   Covers standard smartphones (320px to 640px, e.g. iPhone 16 @ 393px)
    -------------------------------------------------------------------------- */
 @media (max-width: 640px) {
   /* Navbar */
@@ -2655,122 +2696,195 @@ button {
   }
   .mobile-menu-trigger {
     display: inline-flex !important;
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 50%;
   }
   .navbar-container-flex {
-    padding: 8px 16px;
-    gap: 10px;
+    padding: 8px 14px;
+    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .navbar-brand-group {
+    gap: 8px;
+    flex-shrink: 1;
+    min-width: 0;
   }
   .navbar-brand-logo {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
   }
   .navbar-brand-title {
-    font-size: 1.25rem;
+    font-size: 1.16rem;
+    line-height: 1.1;
   }
   .navbar-brand-sub {
-    font-size: 0.52rem;
-    letter-spacing: 0.20em;
+    display: none !important;
+  }
+  .navbar-action-group {
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .nav-booking-pill-btn span {
+    display: none !important;
   }
   .nav-booking-pill-btn {
-    padding: 8px 14px;
-    font-size: 0.84rem;
-    min-height: 44px;
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    padding: 0;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 12px rgba(168, 122, 41, 0.28);
   }
   .nav-lang-toggle-btn {
     padding: 6px 10px;
-    font-size: 0.82rem;
-    min-height: 44px;
+    font-size: 0.80rem;
+    height: 38px;
+    min-height: 38px;
+    border-radius: 20px;
   }
 
-  /* Mobile Hero Layout */
+  /* Mobile Hero Layout: Unboxed, Clean, No White Card */
   .hero-editorial-wrapper {
     height: auto;
     min-height: auto;
     max-height: none;
-    background-position: 22% top;
+    background-position: left top;
     background-size: cover;
-    padding: 24px 0 20px;
+    padding: 20px 0 16px;
+    overflow-x: hidden;
+    width: 100%;
   }
   .hero-editorial-container {
     height: auto;
     gap: 16px;
     padding: 0 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
   .hero-main-row {
     justify-content: center;
     padding-inline-start: 0;
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .hero-story-column {
     width: 100%;
-    max-width: 440px;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-radius: 18px;
-    border: 1px solid rgba(201, 158, 75, 0.22);
-    padding: 22px 16px;
-    box-shadow: 0 8px 24px rgba(40, 5, 12, 0.08);
+    max-width: 100%;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
     text-align: center;
     align-items: center;
     margin: 0 auto;
+    box-sizing: border-box;
+  }
+  .hero-brand-kicker {
+    margin-bottom: 6px;
+  }
+  .kicker-line {
+    width: 24px;
+  }
+  .kicker-text {
+    font-size: 0.80rem;
+    letter-spacing: 0.20em;
   }
   .hero-luxury-headline {
-    font-size: clamp(1.68rem, 6.2vw, 1.88rem);
+    font-size: clamp(1.65rem, 5.8vw, 1.95rem);
     line-height: 1.25;
+    margin-bottom: 8px;
+    width: 100%;
+    max-width: 100%;
+    word-wrap: break-word;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
   }
   .hero-luxury-subheadline {
     font-size: 1.05rem;
+    margin-bottom: 6px;
   }
   .hero-luxury-desc {
     font-size: 0.90rem;
     line-height: 1.65;
-    max-width: 380px;
-    margin: 0 auto 14px;
+    max-width: 350px;
+    margin: 0 auto 16px;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
   }
   .hero-luxury-actions {
+    display: flex;
     flex-direction: column;
     width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
     gap: 10px;
-    margin-bottom: 0;
   }
   .hero-btn-booking,
   .hero-btn-discover {
     width: 100%;
     justify-content: center;
     min-height: 48px;
-    font-size: 0.92rem;
+    font-size: 0.94rem;
   }
 
-  /* 4 Trust Features: Balanced 2x2 grid */
+  /* 4 Trust Features: Clean 2x2 grid without any box */
   .hero-trust-strip {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px 12px;
+    gap: 12px 14px;
     width: 100%;
-    margin-top: 16px;
+    max-width: 350px;
+    margin: 18px auto 0;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
   }
   .trust-strip-divider {
-    display: none;
+    display: none !important;
   }
   .trust-strip-item {
+    display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 4px;
     padding: 0;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
   }
   .trust-item-text {
     align-items: center;
     text-align: center;
   }
   .trust-main-txt {
-    font-size: 0.84rem;
+    font-size: 0.85rem;
+    font-weight: 800;
     white-space: normal;
+    line-height: 1.3;
+    color: #28050C;
   }
   .trust-sub-txt {
-    font-size: 0.74rem;
+    font-size: 0.75rem;
+    font-weight: 600;
     white-space: normal;
+    line-height: 1.3;
+    color: #6B3B48;
+  }
+  .hero-scroll-wrap {
+    display: none;
   }
 
   /* Mobile Section Cards */
@@ -2785,20 +2899,25 @@ button {
   .lookbook-title,
   .features-title,
   .faq-main-title {
-    font-size: 1.72rem;
+    font-size: clamp(1.4rem, 5.5vw, 1.75rem);
+    line-height: 1.3;
+    word-wrap: break-word;
   }
 
+  .gallery-carousel-wrapper {
+    margin: 0;
+  }
   .gallery-slide-item {
-    flex: 0 0 min(280px, 82vw);
+    flex: 0 0 min(280px, 80vw);
   }
   .gallery-slider-track {
     padding: 14px 4px 18px;
-    gap: 16px;
+    gap: 14px;
   }
   .gallery-nav-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 1.35rem;
+    width: 38px;
+    height: 38px;
+    font-size: 1.3rem;
   }
   .gallery-nav-prev { right: 2px; }
   .gallery-nav-next { left: 2px; }
@@ -2858,37 +2977,36 @@ button {
   }
   .navbar-container-flex {
     padding: 6px 10px;
-    gap: 8px;
+    gap: 6px;
   }
   .navbar-brand-logo {
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
   }
   .navbar-brand-title {
-    font-size: 1.08rem;
-  }
-  .navbar-brand-sub {
-    font-size: 0.48rem;
-    letter-spacing: 0.16em;
-  }
-  .nav-booking-pill-btn span {
-    display: none; /* Icon-only button on ultra-narrow screens prevents wrapping */
+    font-size: 1.05rem;
   }
   .nav-booking-pill-btn {
-    padding: 8px 10px;
-    border-radius: 50%;
-    min-width: 38px;
-    min-height: 38px;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+  .mobile-menu-trigger {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
   }
   .nav-lang-toggle-btn {
-    padding: 6px 8px;
-    font-size: 0.78rem;
+    padding: 5px 8px;
+    font-size: 0.76rem;
+    height: 36px;
+    min-height: 36px;
   }
   .hero-luxury-headline {
-    font-size: 1.50rem;
+    font-size: 1.48rem;
   }
   .hero-luxury-subheadline {
-    font-size: 0.98rem;
+    font-size: 0.96rem;
   }
   .hero-trust-strip {
     grid-template-columns: 1fr;

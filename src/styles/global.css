@@ -30,8 +30,10 @@
   --border-hairline: 1px solid rgba(25, 20, 19, 0.12);
   --border-delicate: 1px solid rgba(232, 213, 206, 0.7);
 
-  /* Typography: IBM Plex Sans Arabic */
+  /* Typography: IBM Plex Sans Arabic & Montserrat / Cinzel */
   --font-arabic: 'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-latin: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-current: var(--font-arabic);
 
   /* Transitions */
   --transition-smooth: 0.3s cubic-bezier(0.25, 1, 0.3, 1);
@@ -40,12 +42,37 @@
   --navbar-height: 91px;
 }
 
-/* Base Reset & Font Size Increase */
+/* BiDi Document Direction & Typography Switching */
+html[dir="rtl"] {
+  direction: rtl;
+  --font-current: var(--font-arabic);
+}
+
+html[dir="ltr"] {
+  direction: ltr;
+  --font-current: var(--font-latin);
+}
+
+/* Base Reset & Universal Typography */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: var(--font-arabic) !important;
+  font-family: var(--font-current);
+}
+
+/* English Brand Headings & Serifs */
+html[dir="ltr"] h1,
+html[dir="ltr"] h2,
+html[dir="ltr"] .hero-luxury-headline,
+html[dir="ltr"] .navbar-brand-title,
+html[dir="ltr"] .hero-brand-kicker .kicker-text,
+html[dir="ltr"] .section-title,
+html[dir="ltr"] .story-compact-title,
+html[dir="ltr"] .lookbook-title,
+html[dir="ltr"] .features-title,
+html[dir="ltr"] .footer-loc-title {
+  font-family: 'Cinzel', serif, var(--font-latin);
 }
 
 html {
@@ -61,7 +88,6 @@ body {
   color: var(--ink-body);
   line-height: 1.8;
   font-size: 1rem;
-  direction: rtl;
   overflow-x: hidden;
   max-width: 100vw;
   width: 100%;
@@ -190,6 +216,7 @@ button {
   color: #C99E4B;
   line-height: 1.05;
   text-transform: uppercase;
+  white-space: nowrap;
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.08));
 }
 .navbar-brand-sub {
@@ -321,16 +348,30 @@ button {
   transform: translateY(-1px);
 }
 .drawer-lang-btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  color: #6E3242;
-  padding: 8px 0;
-  border: none;
-  background: none;
+  color: #552432;
+  background: rgba(110, 50, 66, 0.08);
+  border: 1.5px solid rgba(110, 50, 66, 0.28);
+  padding: 8px 16px;
+  border-radius: 24px;
   cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  width: fit-content;
+  transition: all 0.25s ease;
+}
+.drawer-lang-btn:hover {
+  background: rgba(110, 50, 66, 0.16);
+  border-color: rgba(110, 50, 66, 0.45);
+}
+.drawer-lang-btn svg,
+.drawer-lang-globe-icon {
+  stroke: #552432;
+  flex-shrink: 0;
 }
 
 .mobile-menu-trigger {
@@ -387,17 +428,53 @@ button {
 .drawer-brand-wrap {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 .drawer-logo-img {
   width: 44px;
   height: 44px;
   border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 3px 12px rgba(110, 50, 66, 0.15);
+}
+.drawer-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+.drawer-brand-title {
+  font-family: 'Cinzel', serif !important;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  background: linear-gradient(180deg, #E2BF72 0%, #C99E4B 45%, #9C7229 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #C99E4B;
+  line-height: 1.1;
+  text-transform: uppercase;
 }
 .drawer-brand-sub {
-  font-size: 0.76rem;
-  color: #6E3242;
-  display: block;
+  font-family: 'Cinzel', serif !important;
+  font-size: 0.48rem;
+  letter-spacing: 0.20em;
+  color: #8C785F;
+  margin-top: 4px;
+  font-weight: 500;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.drawer-brand-sub::before,
+.drawer-brand-sub::after {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(168, 140, 100, 0.15), #A88C64 50%, rgba(168, 140, 100, 0.15));
+  flex-shrink: 0;
 }
 .drawer-close {
   font-size: 1.4rem;
@@ -422,6 +499,57 @@ button {
 .drawer-footer-cta {
   padding-top: 20px;
   border-top: var(--border-hairline);
+  margin-top: auto;
+}
+
+.drawer-booking-btn {
+  width: 100% !important;
+  min-height: 48px !important;
+  background: linear-gradient(135deg, #CF9D48 0%, #D8A952 45%, #BA8937 100%) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  border-radius: 28px !important;
+  padding: 13px 20px !important;
+  font-size: 0.98rem !important;
+  font-weight: 700 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(186, 137, 55, 0.35);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.3, 1);
+  text-shadow: 0 1px 2px rgba(80, 50, 10, 0.3);
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.drawer-booking-btn span {
+  display: inline !important;
+  color: #FFFFFF !important;
+  font-size: 0.98rem !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+.drawer-booking-btn svg,
+.drawer-booking-btn .btn-calendar-icon {
+  width: 18px !important;
+  height: 18px !important;
+  flex-shrink: 0 !important;
+  stroke: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+
+.drawer-booking-btn:hover {
+  background: linear-gradient(135deg, #DBA952 0%, #E6BC68 45%, #C79541 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(186, 137, 55, 0.48);
+}
+
+.drawer-booking-btn:active {
+  transform: translateY(0);
 }
 
 /* ==========================================================================
@@ -439,15 +567,23 @@ button {
   position: relative;
   z-index: 5;
   width: 100%;
-  height: calc(100dvh - var(--navbar-height, 91px));
-  max-height: calc(100dvh - var(--navbar-height, 91px));
-  background: #FAF9F8 url('/assets/hero-bridal-bg.jpg') no-repeat left top;
+  height: clamp(620px, calc(100dvh - var(--navbar-height, 91px)), 840px);
+  min-height: 620px;
+  max-height: 840px;
+  background: 
+    linear-gradient(
+      to left,
+      rgba(255, 255, 255, 0.94) 0%,
+      rgba(255, 255, 255, 0.82) 34%,
+      rgba(255, 255, 255, 0.28) 58%,
+      rgba(255, 255, 255, 0) 76%
+    ),
+    #FAF9F8 url('/assets/hero-bridal-bg.jpg') no-repeat left top;
   background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  direction: rtl;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -496,6 +632,12 @@ button {
   flex: 1;
   padding-inline-start: 4%;
   box-sizing: border-box;
+}
+
+html[dir="ltr"] .hero-main-row {
+  justify-content: flex-end;
+  padding-inline-start: 0;
+  padding-inline-end: 4%;
 }
 
 .hero-dress-spacer {
@@ -760,30 +902,7 @@ button {
 .remaining-sections-flow {
   position: relative;
   background-color: #FAF9F8;
-  background-image: url('/assets/sections-tulle-bg.jpg');
-  background-repeat: repeat-y;
-  background-position: center top;
-  background-size: 100% auto;
   z-index: 2;
-}
-
-/* Seamless Pearl White Transition at Top of Next Section (#FAF9F8) */
-.remaining-sections-flow::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background: linear-gradient(
-    to bottom,
-    #FAF9F8 0%,
-    rgba(250, 249, 248, 0.85) 35%,
-    rgba(250, 249, 248, 0.4) 70%,
-    rgba(250, 249, 248, 0) 100%
-  );
-  pointer-events: none;
-  z-index: 1;
 }
 
 .remaining-sections-flow > * {
@@ -791,20 +910,14 @@ button {
   z-index: 2;
 }
 
-@media (max-width: 991px) {
-  .remaining-sections-flow {
-    background-size: auto 690px;
-    background-position: center top;
-  }
-}
-
 /* ==========================================================================
    BOUTIQUE STORY & NAME ORIGIN (بطاقات قصة البوتيك الأنيقة والمختصرة)
    Sleek 3-Card Layout, Gold Accents (#C99E4B), Moderate Height
    ========================================================================== */
 .story-cards-section {
-  padding: 45px 0 35px;
-  background: transparent;
+  padding: clamp(55px, 6.5vh, 70px) 0 clamp(40px, 4.5vh, 50px);
+  background: #FAF9F8 url('/assets/sections-tulle-bg.jpg') no-repeat center top;
+  background-size: cover;
   position: relative;
   z-index: 2;
 }
@@ -849,7 +962,7 @@ button {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(201, 158, 75, 0.18);
-  border-right: 5px solid #C99E4B;
+  border-inline-start: 5px solid #C99E4B;
   border-radius: 18px;
   padding: 28px 24px;
   box-shadow: 0 8px 24px rgba(201, 158, 75, 0.08);
@@ -862,7 +975,7 @@ button {
   transform: translateY(-4px);
   box-shadow: 0 14px 32px rgba(201, 158, 75, 0.18);
   border-color: rgba(201, 158, 75, 0.3);
-  border-right-color: #E2BF72;
+  border-inline-start-color: #E2BF72;
 }
 
 .card-top-num-row,
@@ -906,6 +1019,7 @@ button {
   color: #191413;
   margin-bottom: 12px;
   line-height: 1.4;
+  text-align: start;
 }
 
 .story-card-body {
@@ -914,13 +1028,14 @@ button {
   line-height: 1.85;
   margin: 0;
   flex-grow: 1;
+  text-align: start;
 }
 
 /* Featured AURA Card Highlight */
 .card-aura-featured {
   background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF7 100%);
   border: 1px solid rgba(201, 158, 75, 0.28);
-  border-right: 5px solid #C99E4B;
+  border-inline-start: 5px solid #C99E4B;
   box-shadow: 0 10px 28px rgba(201, 158, 75, 0.14);
   position: relative;
 }
@@ -979,8 +1094,11 @@ button {
    DRESSES GALLERY SECTION
    ========================================================================== */
 .lookbook-section {
-  padding: 80px 0;
-  background: transparent;
+  padding: clamp(70px, 8vh, 90px) 0 clamp(65px, 7.5vh, 85px);
+  background: #FAF9F8 url('/assets/sections-tulle-bg.jpg') no-repeat center top;
+  background-size: cover;
+  position: relative;
+  z-index: 2;
 }
 .lookbook-header {
   text-align: center;
@@ -1064,14 +1182,14 @@ button {
   box-shadow: 0 10px 28px rgba(184, 134, 11, 0.45);
 }
 .gallery-nav-prev {
-  right: -24px;
+  inset-inline-start: -24px;
 }
 .gallery-nav-next {
-  left: -24px;
+  inset-inline-end: -24px;
 }
 @media (max-width: 860px) {
-  .gallery-nav-prev { right: 2px; width: 42px; height: 42px; font-size: 1.5rem; }
-  .gallery-nav-next { left: 2px; width: 42px; height: 42px; font-size: 1.5rem; }
+  .gallery-nav-prev { inset-inline-start: 2px; width: 42px; height: 42px; font-size: 1.5rem; }
+  .gallery-nav-next { inset-inline-end: 2px; width: 42px; height: 42px; font-size: 1.5rem; }
 }
 
 /* Carousel Dots Indicator */
@@ -1370,9 +1488,11 @@ button {
    QUOTE SECTION (SPREAD OUT & UNBOXED LUXURY EDITORIAL - "افردها")
    ========================================================================== */
 .editorial-quote-spread {
-  padding: 65px 0 70px;
-  background: transparent;
+  padding: clamp(65px, 7.5vh, 85px) 0 clamp(60px, 7vh, 80px);
+  background: #FAF9F8 url('/assets/sections-tulle-bg.jpg') no-repeat center top;
+  background-size: cover;
   position: relative;
+  z-index: 2;
 }
 
 .quote-spread-header {
@@ -1427,7 +1547,7 @@ button {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(201, 158, 75, 0.18);
-  border-right: 5px solid #C99E4B;
+  border-inline-start: 5px solid #C99E4B;
   border-radius: 18px;
   padding: 32px 26px;
   box-shadow: 0 8px 24px rgba(201, 158, 75, 0.08);
@@ -1440,7 +1560,7 @@ button {
   transform: translateY(-4px);
   box-shadow: 0 16px 36px rgba(201, 158, 75, 0.18);
   border-color: rgba(201, 158, 75, 0.3);
-  border-right-color: #E2BF72;
+  border-inline-start-color: #E2BF72;
 }
 
 .pillar-index-badge {
@@ -1464,12 +1584,14 @@ button {
   color: #191413;
   margin-bottom: 12px;
   line-height: 1.4;
+  text-align: start;
 }
 
 .pillar-card-desc {
   font-size: 0.98rem;
   color: #4A3E3B;
   line-height: 1.85;
+  text-align: start;
 }
 
 .quote-spread-bottom-note {
@@ -1490,8 +1612,11 @@ button {
    WHY AURA BEAUTY (FEATURE CARDS)
    ========================================================================== */
 .magazine-features-section {
-  padding: 70px 0;
-  background: transparent;
+  padding: clamp(70px, 8vh, 90px) 0 clamp(65px, 7.5vh, 85px);
+  background: #FAF9F8 url('/assets/sections-tulle-bg.jpg') no-repeat center top;
+  background-size: cover;
+  position: relative;
+  z-index: 2;
 }
 .features-header {
   text-align: center;
@@ -1520,7 +1645,7 @@ button {
   backdrop-filter: blur(10px);
   padding: 32px 26px;
   border: 1px solid rgba(201, 158, 75, 0.18);
-  border-right: 5px solid #C99E4B;
+  border-inline-start: 5px solid #C99E4B;
   border-radius: 18px;
   box-shadow: 0 8px 24px rgba(201, 158, 75, 0.08);
   display: flex;
@@ -1531,7 +1656,7 @@ button {
   transform: translateY(-4px);
   box-shadow: 0 16px 36px rgba(201, 158, 75, 0.18);
   border-color: rgba(201, 158, 75, 0.3);
-  border-right-color: #E2BF72;
+  border-inline-start-color: #E2BF72;
 }
 .feature-card-badge {
   color: #C99E4B;
@@ -1554,11 +1679,13 @@ button {
   margin-bottom: 10px;
   padding-bottom: 8px;
   border-bottom: 1px solid rgba(25, 20, 19, 0.06);
+  text-align: start;
 }
 .feature-card-body {
   font-size: 0.94rem;
   color: var(--ink-body);
   line-height: 1.8;
+  text-align: start;
 }
 
 
@@ -1591,7 +1718,7 @@ button {
 .modal-close-btn {
   position: absolute;
   top: 16px;
-  left: 16px;
+  inset-inline-end: 16px;
   z-index: 10;
   width: 38px;
   height: 38px;
@@ -1691,10 +1818,10 @@ button {
   transition: all 0.2s ease;
 }
 .modal-nav-arrow.arrow-prev {
-  right: 12px;
+  inset-inline-start: 12px;
 }
 .modal-nav-arrow.arrow-next {
-  left: 12px;
+  inset-inline-end: 12px;
 }
 .modal-nav-arrow:hover {
   background: #6E3242;
@@ -1769,6 +1896,7 @@ button {
   padding: 38px 32px;
   display: flex;
   flex-direction: column;
+  text-align: start;
 }
 .modal-badge {
   display: inline-block;
@@ -1793,6 +1921,7 @@ button {
   font-weight: 700;
   color: var(--ink-primary);
   margin: 0;
+  text-align: start;
 }
 .modal-arabic-name-tag {
   display: inline-block;
@@ -1809,18 +1938,21 @@ button {
   color: var(--gold-primary);
   margin-bottom: 14px;
   font-weight: 600;
+  text-align: start;
 }
 .modal-desc {
   font-size: 0.98rem;
   color: var(--ink-body);
   line-height: 1.75;
   margin-bottom: 20px;
+  text-align: start;
 }
 .modal-features-title {
   font-size: 0.92rem;
   font-weight: 700;
   color: var(--ink-primary);
   margin-bottom: 8px;
+  text-align: start;
 }
 .modal-features-list {
   list-style: none;
@@ -1828,10 +1960,12 @@ button {
   flex-direction: column;
   gap: 8px;
   margin-bottom: 25px;
+  text-align: start;
 }
 .modal-features-list li {
   font-size: 0.9rem;
   color: var(--ink-muted);
+  text-align: start;
 }
 
 /* Modal Tailored Dress FAQs */
@@ -1839,6 +1973,7 @@ button {
   margin: 14px 0 20px;
   padding-top: 14px;
   border-top: 1px solid rgba(110, 50, 66, 0.14);
+  text-align: start;
 }
 .modal-dress-faqs.modal-faqs-right-col {
   margin: 14px 16px 20px;
@@ -1999,6 +2134,7 @@ button {
 .footer-location-text-col {
   display: flex;
   flex-direction: column;
+  text-align: start;
 }
 
 .footer-loc-title {
@@ -2006,6 +2142,7 @@ button {
   font-weight: 700;
   color: #3B1621;
   margin-bottom: 8px;
+  text-align: start;
 }
 
 .footer-loc-desc {
@@ -2013,27 +2150,35 @@ button {
   color: #432E33;
   line-height: 1.8;
   margin-bottom: 14px;
+  text-align: start;
 }
 
 .footer-loc-details {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  text-align: start;
 }
 
 .footer-detail-item {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 12px;
   font-size: 0.95rem;
   color: #432E33;
+  text-align: start;
 }
 
 .footer-detail-item strong {
-  min-width: 95px;
+  min-width: 140px;
   color: #3B1621;
   font-weight: 700;
   flex-shrink: 0;
+  text-align: start;
+}
+
+.footer-detail-item span {
+  text-align: start;
 }
 
 /* Service Checklist with Elegant Checkmarks */
@@ -2048,8 +2193,9 @@ button {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  margin-top: 2px;
+  margin-top: 4px;
   padding: 0;
+  text-align: start;
 }
 
 .footer-service-checklist li {
@@ -2058,6 +2204,7 @@ button {
   gap: 8px;
   font-size: 0.93rem;
   color: #432E33;
+  text-align: start;
 }
 
 .service-check-icon {
@@ -2214,6 +2361,7 @@ button {
 .legal-modal-content {
   display: flex;
   flex-direction: column;
+  text-align: start;
 }
 .legal-modal-title {
   font-size: 1.5rem;
@@ -2222,26 +2370,31 @@ button {
   margin-bottom: 12px;
   padding-bottom: 8px;
   border-bottom: 1px solid var(--border-hairline);
+  text-align: start;
 }
 .legal-modal-lead {
   font-size: 0.94rem;
   color: var(--ink-muted);
   margin-bottom: 18px;
   line-height: 1.7;
+  text-align: start;
 }
 .legal-modal-section {
   margin-bottom: 15px;
+  text-align: start;
 }
 .legal-modal-section h3 {
   font-size: 1rem;
   font-weight: 700;
   color: var(--ink-primary);
   margin-bottom: 4px;
+  text-align: start;
 }
 .legal-modal-section p {
   font-size: 0.9rem;
   color: var(--ink-body);
   line-height: 1.75;
+  text-align: start;
 }
 .legal-close-action {
   width: 100%;
@@ -2252,8 +2405,11 @@ button {
    FAQ SECTION
    ========================================================================== */
 .faq-section {
-  padding: 60px 0 70px;
-  background: transparent;
+  padding: clamp(70px, 8vh, 90px) 0 clamp(70px, 8vh, 90px);
+  background: #FAF9F8 url('/assets/sections-tulle-bg.jpg') no-repeat center top;
+  background-size: cover;
+  position: relative;
+  z-index: 2;
 }
 
 .faq-open-header {
@@ -2294,7 +2450,7 @@ button {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(201, 158, 75, 0.18);
-  border-right: 5px solid #C99E4B;
+  border-inline-start: 5px solid #C99E4B;
   border-radius: 18px;
   padding: 26px 30px;
   box-shadow: 0 8px 24px rgba(201, 158, 75, 0.08);
@@ -2305,7 +2461,7 @@ button {
   box-shadow: 0 14px 32px rgba(201, 158, 75, 0.18);
   transform: translateY(-3px);
   border-color: rgba(201, 158, 75, 0.3);
-  border-right-color: #E2BF72;
+  border-inline-start-color: #E2BF72;
 }
 
 .faq-q-row {
@@ -2321,6 +2477,7 @@ button {
   color: #191413;
   line-height: 1.4;
   margin: 0;
+  text-align: start;
 }
 
 .faq-a-content p {
@@ -2328,7 +2485,8 @@ button {
   color: #4A3E3B;
   line-height: 1.85;
   margin: 0;
-  padding-right: 48px;
+  padding-inline-start: 48px;
+  text-align: start;
 }
 
 .faq-toggle-wrap {
@@ -2370,6 +2528,479 @@ button {
 }
 
 /* ==========================================================================
+   CUSTOMER REVIEWS & WHATSAPP TESTIMONIALS SECTION
+   AURA BEAUTY — Luxury Bridal Conversations Showcase
+   ========================================================================== */
+
+.reviews-section {
+  position: relative;
+  padding: clamp(75px, 8.5vh, 100px) 0 clamp(80px, 9vh, 105px);
+  background: #FAF9F8 url('/assets/sections-tulle-bg.jpg') no-repeat center top;
+  background-size: cover;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.reviews-section::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  inset-inline-start: -5%;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201, 158, 75, 0.08) 0%, rgba(201, 158, 75, 0) 70%);
+  pointer-events: none;
+}
+
+.reviews-section::after {
+  content: '';
+  position: absolute;
+  bottom: 5%;
+  inset-inline-end: -5%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(199, 158, 148, 0.1) 0%, rgba(199, 158, 148, 0) 70%);
+  pointer-events: none;
+}
+
+.reviews-header-block {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 50px;
+  position: relative;
+  z-index: 2;
+}
+
+.reviews-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 22px;
+  background: rgba(201, 158, 75, 0.12);
+  border: 1px solid rgba(201, 158, 75, 0.35);
+  border-radius: 30px;
+  color: #8C6A24;
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(8px);
+}
+
+.reviews-badge-sparkle {
+  color: #C99E4B;
+  font-size: 0.85rem;
+}
+
+.reviews-main-title {
+  font-size: clamp(2rem, 3.2vw, 2.5rem);
+  font-weight: 800;
+  color: #191413;
+  line-height: 1.35;
+  margin-bottom: 14px;
+  letter-spacing: -0.4px;
+}
+
+.reviews-subtitle {
+  font-size: 1.05rem;
+  color: #665653;
+  line-height: 1.8;
+  margin: 0 auto;
+}
+
+/* Infinite Moving Marquee Ticker Container */
+.reviews-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 14px 0 35px;
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+/* Left & Right Edge Gradient Fades for depth */
+.reviews-marquee-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(40px, 8vw, 120px);
+  z-index: 5;
+  pointer-events: none;
+}
+.reviews-marquee-fade.fade-left {
+  left: 0;
+  background: linear-gradient(to right, rgba(250, 249, 248, 0.96) 0%, rgba(250, 249, 248, 0) 100%);
+}
+.reviews-marquee-fade.fade-right {
+  right: 0;
+  background: linear-gradient(to left, rgba(250, 249, 248, 0.96) 0%, rgba(250, 249, 248, 0) 100%);
+}
+
+/* Moving Track with Silky-Smooth Continuous Scroll */
+.reviews-marquee-track {
+  display: flex;
+  gap: 26px;
+  width: max-content;
+  will-change: transform;
+}
+
+/* Animation directions: Smooth 60fps translation */
+.reviews-marquee-track.dir-rtl {
+  animation: marqueeScrollRTL 40s linear infinite;
+}
+
+.reviews-marquee-track.dir-ltr {
+  animation: marqueeScrollLTR 40s linear infinite;
+}
+
+/* Pause smoothly when hovered or active */
+.reviews-marquee-track:hover,
+.reviews-marquee-track.is-paused {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScrollRTL {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(100% / 3));
+  }
+}
+
+@keyframes marqueeScrollLTR {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% / 3));
+  }
+}
+
+/* Individual Marquee Review Card - Pure White Square Box with Gold Borders */
+.review-marquee-card {
+  flex: 0 0 280px;
+  width: 280px;
+  height: 280px;
+  aspect-ratio: 1 / 1;
+  max-width: 85vw;
+  background: #FFFFFF;
+  border: 1.5px solid #C99E4B;
+  border-radius: 22px;
+  padding: 24px 22px 20px;
+  box-shadow: 0 8px 26px rgba(201, 158, 75, 0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.review-marquee-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 42px rgba(201, 158, 75, 0.24);
+  border-color: #E2BF72;
+}
+
+/* Card Top Bar */
+.review-card-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.review-verified-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(37, 211, 102, 0.09);
+  color: #0b7c46;
+  border: 1px solid rgba(37, 211, 102, 0.25);
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.review-wa-icon {
+  fill: #25D366;
+  flex-shrink: 0;
+}
+
+.review-stars-group {
+  display: flex;
+  gap: 2.5px;
+  color: #DDA32A;
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.review-star-gold {
+  filter: drop-shadow(0 1px 2px rgba(221, 163, 42, 0.3));
+}
+
+/* Feature Focus Box (Centered in the Square Box) */
+.review-feature-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px 4px;
+  margin: 0;
+  width: 100%;
+}
+
+.review-feature-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #191413;
+  line-height: 1.55;
+  margin: 0;
+  letter-spacing: -0.2px;
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+
+.review-feature-sparkle {
+  color: #C99E4B;
+  font-size: 0.95rem;
+  display: inline-block;
+  vertical-align: 1px;
+  margin-inline-end: 6px;
+  line-height: 1;
+}
+
+/* Luxury Royal Gold Button - Clean Text Only ("عرض المحادثة") */
+.review-gold-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: linear-gradient(135deg, #CF9D48 0%, #D8A952 45%, #BA8937 100%);
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 28px;
+  padding: 11px 20px;
+  font-size: 0.94rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 5px 16px rgba(186, 137, 55, 0.3);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.3, 1);
+  text-shadow: 0 1px 2px rgba(80, 50, 10, 0.3);
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.review-gold-action-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+
+.review-gold-action-btn:hover::after {
+  left: 130%;
+}
+
+.review-gold-action-btn:hover {
+  background: linear-gradient(135deg, #DBA952 0%, #E6BC68 45%, #C79541 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(186, 137, 55, 0.45);
+}
+
+.review-gold-action-btn:active {
+  transform: translateY(0);
+}
+
+
+
+/* ==========================================================================
+   REVIEW MODAL LIGHTBOX
+   ========================================================================== */
+.review-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 14, 13, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: modalFadeIn 0.25s ease-out;
+}
+
+.review-modal-content.clean-modal {
+  background: transparent;
+  border: none;
+  border-radius: 20px;
+  width: auto;
+  max-width: 520px;
+  max-height: 92vh;
+  position: relative;
+  overflow: visible;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: modalScaleUp 0.3s cubic-bezier(0.25, 1, 0.3, 1);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalScaleUp {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Clean Floating Close Button */
+.review-modal-clean-close {
+  position: absolute;
+  top: -16px;
+  inset-inline-end: -16px;
+  z-index: 25;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  color: #191413;
+  border: 1.5px solid #C99E4B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+  transition: all 0.2s ease;
+}
+
+.review-modal-clean-close:hover {
+  background: #C99E4B;
+  color: #FFFFFF;
+  transform: scale(1.1);
+}
+
+/* Pure Full Conversation Image Wrap */
+.review-modal-img-wrap {
+  position: relative;
+  background: transparent;
+  padding: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.7);
+  border: 2px solid rgba(201, 158, 75, 0.45);
+  max-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-modal-full-img {
+  width: auto;
+  max-width: 100%;
+  max-height: 88vh;
+  object-fit: contain;
+  display: block;
+  border-radius: 16px;
+}
+
+.review-modal-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: #191413;
+  border: 1.5px solid rgba(201, 158, 75, 0.4);
+  font-size: 1.4rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.review-modal-arrow:hover {
+  background: #C99E4B;
+  color: #FFFFFF;
+  border-color: #C99E4B;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.review-modal-arrow.arrow-prev {
+  inset-inline-start: 14px;
+}
+
+.review-modal-arrow.arrow-next {
+  inset-inline-end: 14px;
+}
+
+/* Responsive adjustments for Square Cards */
+@media (max-width: 900px) {
+  .review-marquee-card {
+    flex: 0 0 250px;
+    width: 250px;
+    height: 250px;
+    padding: 20px 18px 16px;
+    border-radius: 18px;
+  }
+  .review-feature-title {
+    font-size: 1.12rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .reviews-section {
+    padding: 55px 0 65px;
+  }
+  .review-marquee-card {
+    flex: 0 0 230px;
+    width: 230px;
+    height: 230px;
+    border-radius: 18px;
+    padding: 16px 14px 14px;
+  }
+  .review-feature-title {
+    font-size: 1.05rem;
+  }
+  .review-gold-action-btn {
+    padding: 9px 14px;
+    font-size: 0.88rem;
+  }
+  .review-modal-content {
+    max-width: 95vw;
+    border-radius: 18px;
+  }
+}
+
+/* ==========================================================================
    PRODUCTION RESPONSIVE SYSTEM (DESKTOP, TABLET LANDSCAPE, TABLET PORTRAIT, MOBILE)
    AURA BEAUTY — Tailored layouts for every screen size with zero overflow
    ========================================================================== */
@@ -2379,17 +3010,57 @@ button {
    -------------------------------------------------------------------------- */
 @media (min-width: 1440px) {
   .container {
-    max-width: 1360px;
+    max-width: 1440px;
+  }
+  .hero-editorial-wrapper {
+    height: clamp(640px, calc(100dvh - var(--navbar-height, 91px)), 880px);
+    max-height: 880px;
   }
   .hero-editorial-container {
-    max-width: 1420px;
+    max-width: 1680px;
+    padding: clamp(14px, 2.2vh, 28px) clamp(36px, 4vw, 72px);
+  }
+  .hero-story-column {
+    width: 48%;
+    max-width: 660px;
+  }
+  .hero-luxury-headline {
+    font-size: clamp(2.5rem, 2.6vw, 3.2rem);
+  }
+  .hero-luxury-subheadline {
+    font-size: 1.35rem;
+  }
+  .hero-luxury-desc {
+    font-size: 1.05rem;
+    max-width: 540px;
+    line-height: 1.75;
+  }
+  .hero-luxury-actions {
+    gap: 16px;
+  }
+  .hero-btn-booking {
+    padding: 12px 28px;
+    font-size: 1.02rem;
+  }
+  .hero-btn-discover {
+    padding: 12px 26px;
+    font-size: 1.02rem;
+  }
+  .hero-trust-strip {
+    margin-top: clamp(18px, 2.4vh, 26px);
+  }
+  .trust-main-txt {
+    font-size: 0.92rem;
+  }
+  .trust-sub-txt {
+    font-size: 0.80rem;
   }
 }
 
 /* --------------------------------------------------------------------------
-   2. Large Tablet Landscape & Compact Laptops (1025px to 1239px)
+   2. Large Screens & Compact Laptops (1101px to 1239px)
    -------------------------------------------------------------------------- */
-@media (min-width: 1025px) and (max-width: 1239px) {
+@media (min-width: 1101px) and (max-width: 1239px) {
   .navbar-container-flex {
     padding: 0 20px;
     gap: 16px;
@@ -2416,9 +3087,18 @@ button {
     font-size: 0.85rem;
   }
   .hero-editorial-wrapper {
-    height: calc(100dvh - var(--navbar-height, 86px));
+    height: clamp(600px, calc(100dvh - var(--navbar-height, 86px)), 820px);
     min-height: 600px;
-    background-position: left top;
+    max-height: 820px;
+    background: 
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.50) 0%,
+        rgba(255, 255, 255, 0.62) 28%,
+        rgba(255, 255, 255, 0.75) 62%,
+        rgba(250, 249, 248, 0.96) 100%
+      ),
+      url('/assets/hero-bridal-bg.jpg') no-repeat 32% top;
     background-size: cover;
   }
   .hero-story-column {
@@ -2458,10 +3138,11 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   3. Dedicated Tablet Tier (768px to 1024px)
-   Covers iPad Mini (768px), iPad (820px), iPad Air (820px), iPad Pro Portrait (1024px)
+   3. Dedicated Tablet Tier (641px to 1100px)
+   Covers ALL Tablets: iPad Mini (768px), iPad (820px), iPad Air (820px), 
+   Surface Pro (912px/960px), iPad Pro 11" (834px), iPad Pro 12.9"/13" (1024px/1032px)
    -------------------------------------------------------------------------- */
-@media (min-width: 641px) and (max-width: 1024px) {
+@media (min-width: 641px) and (max-width: 1100px) {
   /* Navbar */
   .navbar-links-group {
     display: none !important;
@@ -2481,12 +3162,20 @@ button {
     font-size: 1.32rem;
   }
   .navbar-brand-sub {
+    display: inline-flex !important;
+    font-size: 0.52rem;
+    letter-spacing: 0.22em;
+    gap: 8px;
+    margin-top: 3px;
+  }
+  .navbar-brand-sub::before,
+  .navbar-brand-sub::after {
+    width: 16px;
+  }
+  .navbar-action-group .nav-booking-pill-btn span {
     display: none !important;
   }
-  .nav-booking-pill-btn span {
-    display: none !important;
-  }
-  .nav-booking-pill-btn {
+  .navbar-action-group .nav-booking-pill-btn {
     width: 40px;
     height: 40px;
     min-width: 40px;
@@ -2507,32 +3196,41 @@ button {
     height: 40px;
   }
 
-  /* Dedicated Tablet Hero Layout (Unboxed & Clean) */
+  /* Dedicated Tablet Hero Layout (Balanced, Centered, NO huge empty void) */
   .hero-editorial-wrapper {
-    height: auto;
-    min-height: calc(100dvh - var(--navbar-height, 84px));
-    max-height: none;
-    background-position: left top;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    background: 
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.70) 0%,
+        rgba(255, 255, 255, 0.76) 28%,
+        rgba(255, 255, 255, 0.84) 62%,
+        rgba(250, 249, 248, 0.98) 100%
+      ),
+      url('/assets/hero-bridal-bg.jpg') no-repeat 38% top;
     background-size: cover;
-    padding: clamp(26px, 3.5vh, 40px) 0 clamp(20px, 2.5vh, 32px);
+    padding: clamp(24px, 3.5vh, 40px) 0 clamp(20px, 3vh, 32px);
     overflow-x: hidden;
+    width: 100%;
   }
   .hero-editorial-container {
-    height: auto;
-    gap: 24px;
-    padding: 0 clamp(16px, 2.5vw, 24px);
+    height: auto !important;
+    gap: 20px;
+    padding: 0 clamp(20px, 3.5vw, 36px);
     max-width: 100%;
     overflow-x: hidden;
   }
   .hero-main-row {
-    justify-content: flex-start; /* in RTL, starts at right */
-    padding-inline-start: clamp(14px, 2.8vw, 28px);
+    justify-content: center;
+    padding-inline-start: 0;
     width: 100%;
     max-width: 100%;
   }
   .hero-story-column {
-    width: clamp(380px, 54%, 480px);
-    max-width: 480px;
+    width: 100%;
+    max-width: 580px;
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
@@ -2541,65 +3239,114 @@ button {
     padding: 0 !important;
     text-align: center;
     align-items: center;
-    margin-inline-start: 0;
+    margin: 0 auto;
+  }
+  .hero-brand-kicker {
+    margin-bottom: 8px;
+  }
+  .hero-brand-kicker .kicker-line {
+    width: 28px;
+    background: #C49B4B;
+  }
+  .hero-brand-kicker .kicker-text {
+    font-size: 0.90rem;
+    font-weight: 700;
+    letter-spacing: 0.20em;
+    color: #8C6521;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95);
   }
   .hero-luxury-headline {
-    font-size: clamp(1.95rem, 2.8vw, 2.25rem);
+    color: #190206;
+    font-size: clamp(2.15rem, 3.8vw, 2.65rem);
+    font-weight: 800;
     line-height: 1.22;
+    margin-bottom: 10px;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95), 0 2px 10px rgba(255, 255, 255, 0.85);
   }
   .hero-luxury-subheadline {
-    font-size: clamp(1.08rem, 1.4vw, 1.18rem);
+    color: #68182B;
+    font-size: clamp(1.14rem, 1.8vw, 1.28rem);
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95);
   }
   .hero-luxury-desc {
-    font-size: clamp(0.88rem, 1.1vw, 0.94rem);
-    line-height: 1.68;
-    max-width: 440px;
+    color: #1F040A;
+    font-size: clamp(0.98rem, 1.35vw, 1.05rem);
+    font-weight: 500;
+    line-height: 1.75;
+    max-width: 520px;
+    margin: 0 auto 22px;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95);
   }
   .hero-luxury-actions {
-    gap: 12px;
-    margin-bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 14px;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
   }
   .hero-btn-booking,
   .hero-btn-discover {
-    padding: 9px 18px;
-    font-size: 0.88rem;
+    flex: 1;
+    min-height: 48px;
+    font-size: 0.95rem;
+    padding: 12px 20px;
+    justify-content: center;
   }
 
-  /* 4 Trust Features: 2x2 grid */
+  /* 4 Trust Features: 4-capsule horizontal strip on Tablet */
   .hero-trust-strip {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px 14px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
     width: 100%;
-    margin-top: 18px;
+    max-width: 620px;
+    margin: 20px auto 0;
     background: transparent !important;
     border: none !important;
     padding: 0 !important;
+    box-shadow: none !important;
   }
   .trust-strip-divider {
     display: none !important;
   }
   .trust-strip-item {
-    flex-direction: row;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
-    padding: 0;
-    text-align: right;
-    justify-content: flex-start;
-    background: transparent !important;
-    border: none !important;
+    text-align: center;
+    gap: 6px;
+    padding: 12px 8px;
+    background: rgba(255, 255, 255, 0.70) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(201, 158, 75, 0.22) !important;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(25, 2, 6, 0.04) !important;
   }
   .trust-item-text {
-    align-items: flex-start;
-    text-align: right;
+    align-items: center;
+    text-align: center;
   }
   .trust-main-txt {
-    font-size: 0.86rem;
-    white-space: nowrap;
+    font-size: 0.84rem;
+    font-weight: 800;
+    color: #190206;
+    white-space: normal;
+    line-height: 1.3;
   }
   .trust-sub-txt {
     font-size: 0.74rem;
-    white-space: nowrap;
+    font-weight: 700;
+    color: #5C2533;
+    white-space: normal;
+    line-height: 1.3;
+  }
+  .hero-scroll-wrap {
+    display: none !important;
   }
 
   /* Sections in Tablet Tier */
@@ -2710,8 +3457,7 @@ button {
   }
   .navbar-brand-group {
     gap: 8px;
-    flex-shrink: 1;
-    min-width: 0;
+    flex-shrink: 0;
   }
   .navbar-brand-logo {
     width: 40px;
@@ -2719,20 +3465,28 @@ button {
     flex-shrink: 0;
   }
   .navbar-brand-title {
-    font-size: 1.16rem;
-    line-height: 1.1;
+    font-size: 1.12rem;
+    line-height: 1.05;
   }
   .navbar-brand-sub {
-    display: none !important;
+    display: inline-flex !important;
+    font-size: 0.44rem;
+    letter-spacing: 0.16em;
+    gap: 6px;
+    margin-top: 2px;
+  }
+  .navbar-brand-sub::before,
+  .navbar-brand-sub::after {
+    width: 12px;
   }
   .navbar-action-group {
     gap: 6px;
     flex-shrink: 0;
   }
-  .nav-booking-pill-btn span {
+  .navbar-action-group .nav-booking-pill-btn span {
     display: none !important;
   }
-  .nav-booking-pill-btn {
+  .navbar-action-group .nav-booking-pill-btn {
     width: 38px;
     height: 38px;
     min-width: 38px;
@@ -2751,14 +3505,22 @@ button {
     border-radius: 20px;
   }
 
-  /* Mobile Hero Layout: Unboxed, Clean, No White Card */
+  /* Mobile Hero Layout: Unboxed, Clean, Shifted Dress + Pearl Wash Veil */
   .hero-editorial-wrapper {
     height: auto;
     min-height: auto;
     max-height: none;
-    background-position: left top;
+    background: 
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.70) 0%,
+        rgba(255, 255, 255, 0.76) 28%,
+        rgba(255, 255, 255, 0.84) 62%,
+        rgba(250, 249, 248, 0.98) 100%
+      ),
+      url('/assets/hero-bridal-bg.jpg') no-repeat 38% top;
     background-size: cover;
-    padding: 20px 0 16px;
+    padding: 22px 0 18px;
     overflow-x: hidden;
     width: 100%;
   }
@@ -2795,32 +3557,43 @@ button {
   .hero-brand-kicker {
     margin-bottom: 6px;
   }
-  .kicker-line {
+  .hero-brand-kicker .kicker-line {
     width: 24px;
+    background: #C49B4B;
   }
-  .kicker-text {
-    font-size: 0.80rem;
+  .hero-brand-kicker .kicker-text {
+    font-size: 0.82rem;
+    font-weight: 700;
     letter-spacing: 0.20em;
+    color: #8C6521;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95);
   }
   .hero-luxury-headline {
-    font-size: clamp(1.65rem, 5.8vw, 1.95rem);
+    color: #190206;
+    font-size: clamp(1.68rem, 6.2vw, 2rem);
+    font-weight: 800;
     line-height: 1.25;
     margin-bottom: 8px;
     width: 100%;
     max-width: 100%;
     word-wrap: break-word;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95), 0 2px 8px rgba(255, 255, 255, 0.85);
   }
   .hero-luxury-subheadline {
-    font-size: 1.05rem;
+    color: #68182B;
+    font-size: 1.08rem;
+    font-weight: 700;
     margin-bottom: 6px;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95);
   }
   .hero-luxury-desc {
-    font-size: 0.90rem;
-    line-height: 1.65;
-    max-width: 350px;
+    color: #1F040A;
+    font-size: 0.92rem;
+    font-weight: 500;
+    line-height: 1.7;
+    max-width: 360px;
     margin: 0 auto 16px;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95);
   }
   .hero-luxury-actions {
     display: flex;
@@ -2838,11 +3611,11 @@ button {
     font-size: 0.94rem;
   }
 
-  /* 4 Trust Features: Clean 2x2 grid without any box */
+  /* 4 Trust Features: Refined 2x2 grid with frosted pearl micro-capsules */
   .hero-trust-strip {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px 14px;
+    gap: 10px 12px;
     width: 100%;
     max-width: 350px;
     margin: 18px auto 0;
@@ -2859,29 +3632,32 @@ button {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 4px;
-    padding: 0;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
+    gap: 5px;
+    padding: 10px 8px;
+    background: rgba(255, 255, 255, 0.65) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(201, 158, 75, 0.22) !important;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(25, 2, 6, 0.04) !important;
   }
   .trust-item-text {
     align-items: center;
     text-align: center;
   }
   .trust-main-txt {
-    font-size: 0.85rem;
+    font-size: 0.84rem;
     font-weight: 800;
     white-space: normal;
     line-height: 1.3;
-    color: #28050C;
+    color: #190206;
   }
   .trust-sub-txt {
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-size: 0.74rem;
+    font-weight: 700;
     white-space: normal;
     line-height: 1.3;
-    color: #6B3B48;
+    color: #5C2533;
   }
   .hero-scroll-wrap {
     display: none;
@@ -2986,7 +3762,18 @@ button {
   .navbar-brand-title {
     font-size: 1.05rem;
   }
-  .nav-booking-pill-btn {
+  .navbar-brand-sub {
+    display: inline-flex !important;
+    font-size: 0.38rem;
+    letter-spacing: 0.12em;
+    gap: 4px;
+    margin-top: 2px;
+  }
+  .navbar-brand-sub::before,
+  .navbar-brand-sub::after {
+    width: 8px;
+  }
+  .navbar-action-group .nav-booking-pill-btn {
     width: 36px;
     height: 36px;
     min-width: 36px;

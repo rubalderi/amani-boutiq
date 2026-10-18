@@ -40,7 +40,7 @@ export default function Footer() {
                 </div>
                 <div className="footer-detail-item">
                   <strong>{t.footer.emailLabel}</strong>
-                  <span><a href={`mailto:${siteConfig.email}`} style={{ color: '#552432', fontWeight: 600 }}>{siteConfig.email}</a></span>
+                  <span><a href={`mailto:${siteConfig.email}`} dir="ltr" style={{ color: '#552432', fontWeight: 600, display: 'inline-block' }}>{siteConfig.email}</a></span>
                 </div>
                 <div className="footer-detail-item footer-detail-services">
                   <strong>{t.footer.serviceNatureLabel}</strong>

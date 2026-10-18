@@ -62,6 +62,7 @@ export default function Navbar() {
             <a href="#collection" className="mag-nav-link">{t.nav.dresses}</a>
             <a href="#bridal-essence" className="mag-nav-link">{t.nav.experience}</a>
             <a href="#faq" className="mag-nav-link">{t.nav.faq}</a>
+            <a href="#reviews" className="mag-nav-link">{t.nav.reviews}</a>
             <a href="#location" className="mag-nav-link">{t.nav.location}</a>
           </div>
 
@@ -114,7 +115,10 @@ export default function Navbar() {
                   alt="AURA BEAUTY" 
                   className="drawer-logo-img" 
                 />
-                <span className="brand-name">{siteConfig.brandName}</span>
+                <div className="drawer-brand-text">
+                  <span className="drawer-brand-title">{siteConfig.brandName}</span>
+                  <span className="drawer-brand-sub">BRIDAL BOUTIQUE</span>
+                </div>
               </div>
               <button 
                 className="drawer-close" 
@@ -131,16 +135,30 @@ export default function Navbar() {
               <a href="#collection" className="drawer-link" onClick={() => setMobileOpen(false)}>{t.nav.dresses}</a>
               <a href="#bridal-essence" className="drawer-link" onClick={() => setMobileOpen(false)}>{t.nav.experience}</a>
               <a href="#faq" className="drawer-link" onClick={() => setMobileOpen(false)}>{t.nav.faq}</a>
+              <a href="#reviews" className="drawer-link" onClick={() => setMobileOpen(false)}>{t.nav.reviews}</a>
               <a href="#location" className="drawer-link" onClick={() => setMobileOpen(false)}>{t.nav.location}</a>
               {/* Language toggle in mobile drawer */}
-              <button onClick={toggleLang} className="drawer-lang-btn">
-                🌐 {t.langToggle}
+              <button 
+                onClick={toggleLang} 
+                className="drawer-lang-btn"
+                aria-label={lang === 'ar' ? 'Switch to English' : 'التبديل للعربية'}
+              >
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="drawer-lang-globe-icon">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+                <span>{t.langToggle}</span>
               </button>
             </div>
 
             <div className="drawer-footer-cta">
-              <button onClick={handleBookingClick} className="nav-booking-pill-btn" style={{ width: '100%', justifyContent: 'center' }}>
-                <svg className="btn-calendar-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <button 
+                type="button"
+                onClick={handleBookingClick} 
+                className="drawer-booking-btn"
+              >
+                <svg className="btn-calendar-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                   <line x1="16" y1="2" x2="16" y2="6"></line>
                   <line x1="8" y1="2" x2="8" y2="6"></line>

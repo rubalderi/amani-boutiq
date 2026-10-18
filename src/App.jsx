@@ -7,6 +7,7 @@ import DressModal from './components/DressModal';
 import QuoteSection from './components/QuoteSection';
 import WhyAura from './components/WhyAura';
 import FAQSection from './components/FAQSection';
+import ReviewsSection from './components/ReviewsSection';
 import Footer from './components/Footer';
 import { LanguageProvider } from './context/LanguageContext';
 
@@ -45,6 +46,9 @@ export default function App() {
 
           {/* Frequently Asked Questions (FAQ) */}
           <FAQSection />
+
+          {/* Genuine WhatsApp Bride Reviews */}
+          <ReviewsSection />
         </div>
       </main>
 

@@ -9,6 +9,7 @@ export const translations = {
       "dresses": "الفساتين",
       "experience": "سر الإطلالة",
       "faq": "الأسئلة الشائعة",
+      "reviews": "تقييمات عرائسنا",
       "location": "موقعنا",
       "bookBtn": "احجزي موعدكِ الآن",
       "bookMsg": "مرحبًا AURA BEAUTY، أود حجز موعد لزيارة البوتيك وتجربة فساتين الزفاف."
@@ -107,6 +108,45 @@ export const translations = {
         }
       ]
     },
+    "reviews": {
+      "badge": "أصداء وتجارب العرائس",
+      "title": "تقييمات عرائسنا",
+      "subtitle": "",
+      "viewOriginal": "عرض المحادثة",
+      "clickToEnlarge": "عرض المحادثة",
+      "verifiedBadge": "محادثة موثقة عبر واتساب",
+      "modalTitle": "محادثة واتساب موثقة مع العروس",
+      "closeAria": "إغلاق النافذة",
+      "prevReview": "المحادثة السابقة",
+      "nextReview": "المحادثة التالية",
+      "counter": "محادثة {current} من {total}",
+      "items": [
+        {
+          "id": 1,
+          "featureTag": "دقة التفصيل والتعامل الراقي",
+          "featureDesc": "فستان وتفاصيل متقنة بدون أي غلطة ومرونة عالية في التعامل",
+          "image": "/assets/reviews/review-1.jpg"
+        },
+        {
+          "id": 2,
+          "featureTag": "سرعة الإنجاز والتسليم المبكر",
+          "featureDesc": "جاهزية تامة قبل الموعد المحدد بيومين لراحة واطمئنان العروس",
+          "image": "/assets/reviews/review-2.jpg"
+        },
+        {
+          "id": 3,
+          "featureTag": "إتقان التعديلات من أول مرة",
+          "featureDesc": "تعديل احترافي دقيق بدون الحاجة لمشوار إضافي ورضا تام للوالدة",
+          "image": "/assets/reviews/review-3.jpg"
+        },
+        {
+          "id": 4,
+          "featureTag": "مرونة مدة التأجير وتمديد العروض",
+          "featureDesc": "تمديد مدة التأجير إلى 5 أيام وتمديد العرض للعروس وصديقاتها",
+          "image": "/assets/reviews/review-4.jpg"
+        }
+      ]
+    },
     "modal": {
       "closeAria": "إغلاق النافذة",
       "photoCounter": "صورة {current} من {total}",
@@ -175,6 +215,7 @@ export const translations = {
       "dresses": "Collection",
       "experience": "Bridal Essence",
       "faq": "FAQ",
+      "reviews": "Bride Stories",
       "location": "Location",
       "bookBtn": "Book Appointment",
       "bookMsg": "Hello AURA BEAUTY, I would like to book an appointment to visit the boutique and try on wedding gowns."
@@ -270,6 +311,45 @@ export const translations = {
         {
           "q": "Can alterations be made to tailor the gown to my exact silhouette?",
           "a": "Yes. During your boutique fitting session, precise measurements are taken to evaluate adjustments (such as waist contouring, hem length, or padding) to ensure your gown fits flawlessly on your big night."
+        }
+      ]
+    },
+    "reviews": {
+      "badge": "Bride Testimonials",
+      "title": "Brides' Reviews",
+      "subtitle": "",
+      "viewOriginal": "View Conversation",
+      "clickToEnlarge": "View Conversation",
+      "verifiedBadge": "Verified WhatsApp Chat",
+      "modalTitle": "Verified Bride WhatsApp Conversation",
+      "closeAria": "Close dialog",
+      "prevReview": "Previous Review",
+      "nextReview": "Next Review",
+      "counter": "Review {current} of {total}",
+      "items": [
+        {
+          "id": 1,
+          "featureTag": "Flawless Details & Gracious Service",
+          "featureDesc": "Impeccable gown craftsmanship and warm, flexible communication",
+          "image": "/assets/reviews/review-1.jpg"
+        },
+        {
+          "id": 2,
+          "featureTag": "Swift Delivery Ahead of Schedule",
+          "featureDesc": "Ready 2 days before the promised fitting for total peace of mind",
+          "image": "/assets/reviews/review-2.jpg"
+        },
+        {
+          "id": 3,
+          "featureTag": "Precision First-Visit Tailoring",
+          "featureDesc": "Meticulous alterations with zero hassle and no repeat visits",
+          "image": "/assets/reviews/review-3.jpg"
+        },
+        {
+          "id": 4,
+          "featureTag": "Flexible Rental Duration & Offers",
+          "featureDesc": "Rental extended to 5 days with generous bespoke pricing",
+          "image": "/assets/reviews/review-4.jpg"
         }
       ]
     },

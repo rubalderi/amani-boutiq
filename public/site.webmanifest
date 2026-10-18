@@ -1,0 +1,21 @@
+{
+  "name": "AURA BEAUTY | بوتيك فساتين زفاف في جدة",
+  "short_name": "AURA BEAUTY",
+  "description": "بوتيك فساتين زفاف فاخرة للبيع والتأجير بجدة حي المروة شارع عبدالرحمن الخزاعي",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF9F8",
+  "theme_color": "#C99E4B",
+  "icons": [
+    {
+      "src": "/assets/logo/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/logo/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

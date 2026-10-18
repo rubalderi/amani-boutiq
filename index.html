@@ -40,9 +40,14 @@
     content="تشكيلات فساتين زفاف ملكية وناعمة للبيع والتأجير بجدة حي المروة. جلسات قياس خاصة واستلام فوري." />
   <meta name="twitter:image" content="/assets/logo/logo.png" />
 
-  <!-- Favicon -->
+  <!-- Favicon & Web App Manifest -->
   <link rel="icon" type="image/png" href="/assets/logo/logo.png" />
   <link rel="apple-touch-icon" href="/assets/logo/logo.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#C99E4B" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <!-- Performance Preload for Critical LCP Hero Image -->
+  <link rel="preload" as="image" href="/assets/hero-bridal-bg.jpg" fetchpriority="high" />
 
   <!-- Google Fonts: IBM Plex Sans Arabic & Cinzel / Montserrat for Boutique Brand Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -93,6 +98,39 @@
       "sameAs": [
         "https://www.instagram.com/aurabeauty.ksa",
         "https://www.tiktok.com/@aurabeauty.ksa"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "4",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "إحدى عرائس البوتيك" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "دقة التفصيل والتعامل الراقي، الفستان وتفاصيلو ولا غلطة حقيقي الشي اللي كنت ابغاه واكثر"
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "عروس AURA" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "سرعة الإنجاز والجاهزية التامة قبل الموعد بيومين، قمة الاهتمام والحرص على راحة العروس"
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "عروس سعيدة" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "إتقان التعديلات من أول مرة، ما احتجت اضرب مشوار ثاني للتعديل والوالدة تدعيلك"
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "العروس نوف" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "مرونة مدة التأجير إلى 5 أيام وتمديد العرض لصديقاتي، تعامل راقي وأخلاق عالية"
+        }
       ],
       "openingHoursSpecification": [
         {
@@ -168,7 +206,50 @@
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root">
+    <header>
+      <nav>
+        <span>AURA BEAUTY - BRIDAL BOUTIQUE</span>
+      </nav>
+    </header>
+    <main>
+      <article>
+        <h1>بوتيك فساتين زفاف في جدة (بيع وتأجير) | AURA BEAUTY</h1>
+        <h2>فستان ليلة العمر يبدأ من هنا</h2>
+        <p>تقدم لكِ AURA BEAUTY مجموعة مختارة من أجمل فساتين الزفاف بتصاميم ملكية ولمسات فاخرة تناسب ذوقكِ الرفيع في جدة حي المروة.</p>
+        
+        <section>
+          <h2>قصة بوتيك AURA BEAUTY لفساتين الأعراس</h2>
+          <p>في قلب جدة، نبتكر لكِ تجربة استثنائية لاختيار فستان الزفاف مع جلسات قياس خاصة ومستقلة لكل عروس.</p>
+        </section>
+
+        <section>
+          <h2>تشكيلة فساتين الزفاف الملكية (بيع وتأجير)</h2>
+          <p>فساتين أعراس فاخرة ومختارة بعناية لتناسب كل عروس تبحث عن التميز والرقي في ليلة العمر.</p>
+        </section>
+
+        <section>
+          <h2>تجربة العروس المميزة وجلسات القياس الخاصة</h2>
+          <p>خصوصية تامة، استلام فوري بدون شحن، ومرونة في مدة التأجير لتنعمي براحة البال.</p>
+        </section>
+
+        <section>
+          <h2>الأسئلة الشائعة حول حجز المواعيد وتجربة الفساتين</h2>
+          <p>إجابات كاملة حول كيفية حجز موعد الزيارة، موقع البوتيك في جدة حي المروة، وخيارات البيع والتأجير.</p>
+        </section>
+
+        <section>
+          <h2>آراء وتجارب عرائس بوتيك AURA BEAUTY</h2>
+          <p>تقييمات وتجارب حقيقية لعرائسنا حول دقة المقاسات، التعامل الراقي، والجودة الملكية.</p>
+        </section>
+
+        <section>
+          <h2>موقع البوتيك والتواصل في جدة</h2>
+          <p>جدة - حي المروة - شارع عبدالرحمن الخزاعي | هاتف وواتساب: 0568232660</p>
+        </section>
+      </article>
+    </main>
+  </div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 

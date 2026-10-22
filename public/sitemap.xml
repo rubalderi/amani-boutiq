@@ -2,51 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://aurabeauty.sa/</loc>
-    <lastmod>2026-10-18</lastmod>
+    <loc>https://aurabeautty.com/</loc>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://aurabeauty.sa/assets/dresses/aura-01-1.jpg</image:loc>
-      <image:title>فستان زفاف ملكي - AURA BEAUTY جدة</image:title>
+      <image:loc>https://aurabeautty.com/assets/dresses/aura-01-1.jpg</image:loc>
+      <image:title>فستان زفاف الكريستالي الأوروبي - AURA BEAUTY جدة</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://aurabeauty.sa/assets/dresses/aura-06-1.jpg</image:loc>
-      <image:title>فستان الساتان المتألق - AURA BEAUTY جدة</image:title>
+      <image:loc>https://aurabeautty.com/assets/dresses/aura-02-1.jpg</image:loc>
+      <image:title>فستان زفاف الدانتيل الإيطالي - AURA BEAUTY جدة</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://aurabeauty.sa/assets/logo/logo.png</image:loc>
-      <image:title>شعار بوتيك أورا بيوتي لفساتين الزفاف</image:title>
+      <image:loc>https://aurabeautty.com/assets/dresses/aura-03-1.jpg</image:loc>
+      <image:title>فستان زفاف التول الفاخر - AURA BEAUTY جدة</image:title>
     </image:image>
-  </url>
-  <url>
-    <loc>https://aurabeauty.sa/#dresses</loc>
-    <lastmod>2026-10-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://aurabeauty.sa/#reviews</loc>
-    <lastmod>2026-10-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://aurabeauty.sa/#faq</loc>
-    <lastmod>2026-10-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://aurabeauty.sa/#experience</loc>
-    <lastmod>2026-10-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://aurabeauty.sa/#location</loc>
-    <lastmod>2026-10-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://aurabeautty.com/assets/dresses/aura-04-1.jpg</image:loc>
+      <image:title>فستان زفاف الميكادو الملكي - AURA BEAUTY جدة</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aurabeautty.com/assets/dresses/aura-05-1.jpg</image:loc>
+      <image:title>فستان زفاف الشيفون الإنسيابي - AURA BEAUTY جدة</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aurabeautty.com/assets/dresses/aura-06-1.jpg</image:loc>
+      <image:title>فستان الساتان الحريري المتألق - AURA BEAUTY جدة</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aurabeautty.com/assets/logo/logo.png</image:loc>
+      <image:title>شعار بوتيك أورا بيوتي لفساتين الزفاف جدة</image:title>
+    </image:image>
   </url>
 </urlset>

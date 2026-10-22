@@ -1,4 +1,4 @@
-# robots.txt for AURA BEAUTY (https://aurabeauty.sa)
+# robots.txt for AURA BEAUTY (https://aurabeautty.com)
 User-agent: *
 Allow: /
 Disallow: /node_modules/
@@ -12,4 +12,4 @@ User-agent: Bingbot
 Allow: /
 
 # Sitemap
-Sitemap: https://aurabeauty.sa/sitemap.xml
+Sitemap: https://aurabeautty.com/sitemap.xml
